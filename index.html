@@ -12,15 +12,8 @@
 <body>
 
     <div id="app">
-        <!--<h1 v-bind:src="title">{{ message }}</h1>-->
-        <!--<img v-bind:src="src">-->
-
-        <h3>texts</h3>
-        <ul>
-            <li v-for="c in count">
-                {{ c }}
-            </li>
-        </ul>
+        <h1>{{ message }}</h1>
+        <input type="text" v-model="message">
     </div>
 
 <script src="https://unpkg.com/vue@2.5.13/dist/vue.js"></script>
