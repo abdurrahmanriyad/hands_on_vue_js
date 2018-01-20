@@ -12,8 +12,15 @@
 <body>
 
     <div id="app">
+        <!--<h1>{{ message }}</h1>-->
+        <!--<input type="text" v-model="message">-->
+
         <h1>{{ message }}</h1>
-        <input type="text" v-model="message">
+        <input type="text" v-model="m_text">
+        <!--you may use @ instead of v-on-->
+        <button @click="changeText" class="btn btn-primary">Change Text</button>
+        <button @click="countUp" class="btn btn-primary">Press Me!</button>
+        <button v-on:click="countDown" class="btn btn-primary">Press Me!</button>
     </div>
 
 <script src="https://unpkg.com/vue@2.5.13/dist/vue.js"></script>
@@ -21,7 +28,8 @@
     var app = new Vue({
         el: '#app',
         data: {
-            message: 'Hello Vue World',
+            message: '',
+            m_text: '',
             intro: 'Hello <strong>bangladesh</strong>',
             viewed: true,
             viewed2: true,
@@ -33,7 +41,20 @@
                 {"text": "text2"},
                 {"text": "text3"},
             ],
-            count: 10
+            count: 0,
+
+
+        },
+        methods:{
+            countUp: function () {
+                this.count +=1;
+            },
+            countDown: function () {
+                this.count -= 1;
+            },
+            changeText: function () {
+                this.message = this.m_text;
+            }
         }
     });
 </script>
