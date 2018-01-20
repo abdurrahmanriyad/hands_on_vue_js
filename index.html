@@ -12,8 +12,15 @@
 <body>
 
     <div id="app">
-        <h1 v-bind:src="title">{{ message }}</h1>
-        <img v-bind:src="src">
+        <!--<h1 v-bind:src="title">{{ message }}</h1>-->
+        <!--<img v-bind:src="src">-->
+
+        <h3>texts</h3>
+        <ul>
+            <li v-for="c in count">
+                {{ c }}
+            </li>
+        </ul>
     </div>
 
 <script src="https://unpkg.com/vue@2.5.13/dist/vue.js"></script>
@@ -28,6 +35,12 @@
             pre: "I am pre element",
             src: "http://via.placeholder.com/350x150",
             title: "vue title",
+            names: [
+                {"text": "text1"},
+                {"text": "text2"},
+                {"text": "text3"},
+            ],
+            count: 10
         }
     });
 </script>
