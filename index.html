@@ -1,62 +1,68 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Hands on vue.js</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Vue.js Tutorial | Computed Properties</title>
 
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 </head>
+
 <body>
-
-    <div id="app">
-        <!--<h1>{{ message }}</h1>-->
-        <!--<input type="text" v-model="message">-->
-
-        <h1>{{ message }}</h1>
-        <input type="text" v-model="m_text">
-        <!--you may use @ instead of v-on-->
-        <button @click="changeText" class="btn btn-primary">Change Text</button>
-        <button @click="countUp" class="btn btn-primary">Press Me!</button>
-        <button v-on:click="countDown" class="btn btn-primary">Press Me!</button>
+<div id="app" class="container">
+    <div class="row">
+        <div class="col-md-12 text-center">
+            <h1>You are a {{ level }}<strong></strong></h1>
+            <hr />
+            <h3>Current XP: {{ xp }}</h3>
+        </div>
     </div>
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+            <div class="row">
+                <div class="col-md-6">
+                    <button class="btn btn-success btn-block" v-on:click="increaseXp"><span class="glyphicon glyphicon-collapse-up"></span> Add XP</button>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <button v-on:click="decreaseXp" class="btn btn-success btn-block"><span class="glyphicon glyphicon-collapse-down"></span> Decrease XP</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
 
-<script src="https://unpkg.com/vue@2.5.13/dist/vue.js"></script>
+<script src="https://unpkg.com/vue@2.0.3/dist/vue.js"></script>
+
 <script>
     var app = new Vue({
         el: '#app',
         data: {
-            message: '',
-            m_text: '',
-            intro: 'Hello <strong>bangladesh</strong>',
-            viewed: true,
-            viewed2: true,
-            pre: "I am pre element",
-            src: "http://via.placeholder.com/350x150",
-            title: "vue title",
-            names: [
-                {"text": "text1"},
-                {"text": "text2"},
-                {"text": "text3"},
-            ],
-            count: 0,
-
-
+            xp: 10
+        }, 
+        methods: {
+            increaseXp: function () {
+                this.xp += 10
+            },
+            decreaseXp: function () {
+                this.xp -= 10
+            }
         },
-        methods:{
-            countUp: function () {
-                this.count +=1;
-            },
-            countDown: function () {
-                this.count -= 1;
-            },
-            changeText: function () {
-                this.message = this.m_text;
+        computed: {
+            level: function () {
+                if (this.xp > 200) {
+                    return "Advanced";
+                } else if(this.xp > 100) {
+                    return "Medium";
+                } else {
+                    return "Beginner";
+                }
             }
         }
-    });
+    })
 </script>
-</body>
 </html>
