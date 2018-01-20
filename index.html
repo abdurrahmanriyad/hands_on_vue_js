@@ -12,7 +12,7 @@
 <body>
 
     <div id="app">
-        <h1>{{message}}</h1>
+        <h1 v-show="viewed">hell</h1>
     </div>
 
 <script src="https://unpkg.com/vue@2.5.13/dist/vue.js"></script>
@@ -20,7 +20,9 @@
     var app = new Vue({
         el: '#app',
         data: {
-            message: 'Hello Vue World'
+            message: 'Hello Vue World',
+            intro: 'Hello <strong>bangladesh</strong>',
+            viewed: false
         }
     });
 </script>
